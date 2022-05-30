@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML5 canvas</title>
+        <style>
+            canvas{
+                border: black 1px solid;
+                background-color: lightgrey;
+            }
+        </style>
+        <script>
+            var c , ctx ;
+            function init() {
+                c = document.getElementById('myCanvas')
+                ctx = c.getContext('2d')
+                draw()
+            }
+
+            function draw(){
+                //red square
+                ctx.fillStyle='red'
+                ctx.fillRect(30,30,50,50)
+                ctx.strokeStyle='black'
+                ctx.lineWidth='3'
+                ctx.strokeRect(30,30,50,50)
+
+                //black square
+                ctx.fillStyle='black'
+                ctx.fillRect(40,40,50,50)
+                ctx.strokeStyle='black'
+                ctx.lineWidth='3'
+                ctx.strokeRect(30,30,50,50)
+
+                //draw text
+                ctx.font='30pt Arial'
+                //create Gradient
+                var gradient = ctx.createLinearGradient(0,0,c.width,0)
+                gradient.addColorStop('0','red',)
+                gradient.addColorStop('1','black',)
+
+                //fill text with gradient
+                ctx.fillStyle=gradient
+                ctx.fillText('My Company',100,80)
+
+                //define line 
+                ctx.strokeStyle='black'
+                ctx.fillStyle='red'
+                ctx.lineWidth = '2'
+                ctx.beginPath()
+                ctx.moveTo(90,89)
+                ctx.lineTo(350,89)
+                ctx.stroke()
+                ctx.closePath()
+
+            }
+        </script>
+    </head>
+    <body onload="init()">
+        <canvas id="myCanvas" width="400" height="150">
+            <p>Your browder doesnt support canvas</p>
+        </canvas>
+    </body>
+</html>
